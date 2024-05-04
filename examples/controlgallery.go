@@ -1,11 +1,12 @@
 // 12 august 2018
 
+//go:build OMIT
 // +build OMIT
 
 package main
 
 import (
-	"github.com/libui-ng/golang-ui"
+	ui "github.com/libui-ng/golang-ui"
 	_ "github.com/libui-ng/golang-ui/winmanifest"
 )
 
@@ -30,7 +31,7 @@ func makeBasicControlsPage() ui.Control {
 	group.SetMargined(true)
 	vbox.Append(group, true)
 
-group.SetChild(ui.NewNonWrappingMultilineEntry())
+	group.SetChild(ui.NewNonWrappingMultilineEntry())
 
 	entryForm := ui.NewForm()
 	entryForm.SetPadded(true)
@@ -129,11 +130,11 @@ func makeDataChoosersPage() ui.Control {
 	grid.SetPadded(true)
 	vbox.Append(grid, false)
 
-	button := ui.NewButton("Open File")
+	button := ui.NewButton("Open Folder")
 	entry := ui.NewEntry()
 	entry.SetReadOnly(true)
 	button.OnClicked(func(*ui.Button) {
-		filename := ui.OpenFile(mainwin)
+		filename := ui.OpenFolder(mainwin)
 		if filename == "" {
 			filename = "(cancelled)"
 		}
