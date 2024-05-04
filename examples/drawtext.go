@@ -1,5 +1,6 @@
 // 19 august 2018
 
+//go:build OMIT
 // +build OMIT
 
 package main
@@ -7,13 +8,13 @@ package main
 // TODO probably a bug in libui-ng: changing the font away from skia leads to a crash
 
 import (
-	"github.com/libui-ng/golang-ui"
-	_ "github.com/libui-ng/golang-ui/winmanifest"
+	"github.com/trevor403/golang-ui"
+	_ "github.com/trevor403/golang-ui/winmanifest"
 )
 
 var (
 	fontButton *ui.FontButton
-	alignment *ui.Combobox
+	alignment  *ui.Combobox
 
 	attrstr *ui.AttributedString
 )
@@ -30,7 +31,7 @@ func appendWithAttributes(what string, attrs ...ui.Attribute) {
 func makeAttributedString() {
 	attrstr = ui.NewAttributedString(
 		"Drawing strings with package ui is done with the ui.AttributedString and ui.DrawTextLayout objects.\n" +
-		"ui.AttributedString lets you have a variety of attributes: ")
+			"ui.AttributedString lets you have a variety of attributes: ")
 
 	appendWithAttributes("font family", ui.TextFamily("Courier New"))
 	attrstr.AppendUnattributed(", ")
@@ -70,11 +71,11 @@ func makeAttributedString() {
 
 	attrstr.AppendUnattributed("and control over OpenType features such as ligatures (for instance, ")
 	appendWithAttributes("afford", ui.OpenTypeFeatures{
-		ui.ToOpenTypeTag('l', 'i', 'g', 'a'):		0,
+		ui.ToOpenTypeTag('l', 'i', 'g', 'a'): 0,
 	})
 	attrstr.AppendUnattributed(" vs. ")
 	appendWithAttributes("afford", ui.OpenTypeFeatures{
-		ui.ToOpenTypeTag('l', 'i', 'g', 'a'):		1,
+		ui.ToOpenTypeTag('l', 'i', 'g', 'a'): 1,
 	})
 	attrstr.AppendUnattributed(").\n")
 
@@ -85,10 +86,10 @@ type areaHandler struct{}
 
 func (areaHandler) Draw(a *ui.Area, p *ui.AreaDrawParams) {
 	tl := ui.DrawNewTextLayout(&ui.DrawTextLayoutParams{
-		String:		attrstr,
-		DefaultFont:	fontButton.Font(),
-		Width:		p.AreaWidth,
-		Align:		ui.DrawTextAlign(alignment.Selected()),
+		String:      attrstr,
+		DefaultFont: fontButton.Font(),
+		Width:       p.AreaWidth,
+		Align:       ui.DrawTextAlign(alignment.Selected()),
 	})
 	defer tl.Free()
 	p.Context.Text(tl, 0, 0)
@@ -152,7 +153,7 @@ func setupUI() {
 	alignment.Append("Left")
 	alignment.Append("Center")
 	alignment.Append("Right")
-	alignment.SetSelected(0)		// start with left alignment
+	alignment.SetSelected(0) // start with left alignment
 	alignment.OnSelected(func(*ui.Combobox) {
 		area.QueueRedrawAll()
 	})

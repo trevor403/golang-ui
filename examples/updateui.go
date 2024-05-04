@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/libui-ng/golang-ui"
+	"github.com/trevor403/golang-ui"
 )
 
 // Example showing how to update the UI using the QueueMain function

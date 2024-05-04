@@ -6,8 +6,8 @@
 package main
 
 import (
-	ui "github.com/libui-ng/golang-ui"
-	_ "github.com/libui-ng/golang-ui/winmanifest"
+	ui "github.com/trevor403/golang-ui"
+	_ "github.com/trevor403/golang-ui/winmanifest"
 )
 
 var mainwin *ui.Window

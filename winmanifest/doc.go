@@ -2,11 +2,11 @@
 
 // Package winmanifest provides a basic manifest for use with
 // package ui. You import it for its side effects only, as
-// 
-// 	import _ "github.com/libui-ng/golang-ui/winmanifest"
-// 
+//
+// 	import _ "github.com/trevor403/golang-ui/winmanifest"
+//
 // On non-Windows platforms this package does nothing.
-// 
+//
 // If you intend on using a custom manifest instead of the generic
 // one in this package, be sure to read package ui's README so your
 // manifest can have the directives necessary for package ui to work.
